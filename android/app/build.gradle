@@ -10,7 +10,8 @@ android {
         applicationId 'com.goal.scores'
         minSdk 21
         targetSdk 34
-        versionCode((System.getenv('GITHUB_RUN_NUMBER') ?: '1').toInteger())
+        // +100: النسخ اللي قبل كده كانت بتتبني في ريبو Test2
+        versionCode((System.getenv('GITHUB_RUN_NUMBER') ?: '1').toInteger() + 100)
         versionName "1.0.${System.getenv('GITHUB_RUN_NUMBER') ?: '0'}"
     }
 

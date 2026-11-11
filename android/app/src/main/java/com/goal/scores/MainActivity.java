@@ -28,7 +28,7 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * GOAL: WebView بيعرض واجهة النتايج (من scores/public)،
+ * GOAL: WebView بيعرض واجهة النتايج (من public)،
  * وطلبات /api/football/* بتتبعت من هنا لـ API-Football بالمفتاح اللي المستخدم حطه.
  */
 public class MainActivity extends Activity {

@@ -4,7 +4,7 @@
 
 ## 📱 تطبيق الأندرويد
 
-**https://github.com/EngineerAhmedAbass/Test2/releases/download/goal-latest/GOAL-Scores.apk**
+**https://github.com/EngineerAhmedAbass/goal-scores/releases/latest/download/GOAL-Scores.apk**
 
 ## مصادر البيانات
 - **ESPN** (من غير مفتاح ولا حد للطلبات، أي يوم قبل أو بعد): الدوريات الأوروبية، أبطال أفريقيا والكونفدرالية، السعودي، آسيا، كأس العالم، وأكتر من 30 بطولة.
@@ -39,3 +39,7 @@ cd scores
 node server.js
 ```
 وافتح http://localhost:3100
+
+## تطبيقات تانية
+- 🕌 [مواقيت الصلاة للتليفزيون](https://github.com/EngineerAhmedAbass/prayer-times-tv)
+- 📺 [مشغل IPTV](https://github.com/EngineerAhmedAbass/iptv-player)

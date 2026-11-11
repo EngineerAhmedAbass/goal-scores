@@ -2,8 +2,8 @@ name: GOAL APK
 
 on:
   push:
-    branches: ['claude/iptv-account-program-7mgjz1', 'main']
-    paths: ['scores/**', '.github/workflows/goal-android.yml']
+    branches: ['main']
+    paths-ignore: ['README.md']
   workflow_dispatch:
 
 permissions:
@@ -29,25 +29,25 @@ jobs:
           gradle-version: '8.9'
 
       - name: Build APK
-        run: gradle -p scores/android assembleRelease --no-daemon --stacktrace
+        run: gradle -p android assembleRelease --no-daemon --stacktrace
 
       - name: Rename APK
-        run: cp scores/android/app/build/outputs/apk/release/app-release.apk GOAL-Scores.apk
+        run: cp android/app/build/outputs/apk/release/app-release.apk GOAL-Scores.apk
 
       - uses: actions/upload-artifact@v4
         with:
           name: GOAL-Scores-apk
           path: GOAL-Scores.apk
 
-      # رابط ثابت لآخر نسخة: releases/download/goal-latest/GOAL-Scores.apk
-      # (ومش بنعلّمها "Latest" عشان رابط تطبيق STREAM يفضل شغال)
+      # رابط ثابت لآخر نسخة: releases/latest/download/GOAL-Scores.apk
       - name: Publish release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release delete goal-latest --yes --cleanup-tag || true
-          gh release create goal-latest GOAL-Scores.apk \
+          V=$(( ${{ github.run_number }} + 100 ))
+          gh release delete apk-latest --yes --cleanup-tag || true
+          gh release create apk-latest GOAL-Scores.apk \
             --target "${{ github.sha }}" \
-            --latest=false \
-            --title "GOAL — نتايج الماتشات (نسخة ${{ github.run_number }})" \
+            --latest \
+            --title "GOAL — نتايج الماتشات (نسخة $V)" \
             --notes "نزّل GOAL-Scores.apk وسطّبه على الموبايل. أول مرة هيطلب منك مفتاح API-Football المجاني."
